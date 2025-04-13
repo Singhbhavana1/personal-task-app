@@ -1,0 +1,136 @@
+<div class="container">
+  <app-quote></app-quote>
+  <div class="w-full sm:flex justify-center gap-4">
+    <div class="card sm:w-1/4 border rounded-xl px-4 py-2">
+      <h4 class="text-xl font-semibold tracking-wider">
+        Welcome back,<br />
+        <span>User!</span>
+      </h4>
+      <div class="grid grid-cols-3 gap-4 my-2">
+        <div
+          class="border bg-white rounded px-1 py-2 flex flex-col items-center text-center shadow"
+          *ngFor="let statusData of userTaskData"
+        >
+          <i [class]="statusData.icon + ' text-2xl mb-2 text-pink-600'"></i>
+          <h4 class="font-medium text-gray-700">{{ statusData.status }}</h4>
+          <h3 class="text-xl font-bold text-black">{{ statusData.value }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="card sm:w-3/4 border rounded-xl px-4 py-2">
+      <h4>Task List</h4>
+      <div class="p-4 overflow-x-auto">
+        <table
+          class="min-w-full border-collapse border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#1b1f3b] shadow-lg rounded-lg"
+        >
+          <thead
+            class="bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+          >
+            <tr>
+              <th
+                class="border border-gray-300 dark:border-gray-600 px-6 py-3 text-left text-sm font-semibold uppercase"
+              >
+                Task Name
+              </th>
+              <th
+                class="border border-gray-300 dark:border-gray-600 px-6 py-3 text-left text-sm font-semibold uppercase"
+              >
+                Create Date
+              </th>
+              <th
+                class="border border-gray-300 dark:border-gray-600 px-6 py-3 text-left text-sm font-semibold uppercase"
+              >
+                Finish Date
+              </th>
+              <th
+                class="border border-gray-300 dark:border-gray-600 px-6 py-3 text-left text-sm font-semibold uppercase"
+              >
+                Status
+              </th>
+              <th
+                class="border border-gray-300 dark:border-gray-600 px-6 py-3 text-left text-sm font-semibold uppercase"
+              >
+                Notes
+              </th>
+              <th
+                class="border border-gray-300 dark:border-gray-600 px-6 py-3 text-left text-sm font-semibold uppercase"
+              >
+                Start Pomodoro
+              </th>
+              <th
+                class="border border-gray-300 dark:border-gray-600 px-6 py-3 text-left text-sm font-semibold uppercase"
+              >
+                Edit/Delete
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let task of taskList"
+              class="hover:bg-gray-100 dark:hover:bg-[#25294b] transition"
+            >
+              <td
+                class="border px-6 py-4 text-sm text-gray-900 dark:text-white"
+              >
+                {{ task.name }}
+              </td>
+              <td
+                class="border px-6 py-4 text-sm text-gray-600 dark:text-gray-300"
+              >
+                {{ task.createDate }}
+              </td>
+              <td
+                class="border px-6 py-4 text-sm text-gray-600 dark:text-gray-300"
+              >
+                {{ task.finishDate }}
+              </td>
+              <td class="border px-6 py-4 text-sm">
+                <button
+                  [ngClass]="{
+                    'bg-green-600 hover:bg-green-700':
+                      task.status === 'Completed',
+                    'bg-yellow-500 hover:bg-yellow-600':
+                      task.status === 'Pending',
+                    'bg-orange-500 hover:bg-orange-600':
+                      task.status === 'In Process'
+                  }"
+                  class="text-white text-sm px-3 py-1 rounded-full"
+                >
+                  {{ task.status }}
+                </button>
+              </td>
+              <td
+                class="border px-6 py-4 text-sm text-gray-700 dark:text-gray-200"
+              >
+                <button
+                  class="bg-orange-500 hover:bg-orange-600 text-white text-sm px-3 py-2 rounded-full flex justify-center"
+                >
+                  <i class="fas fa-sticky-note"></i>
+                </button>
+              </td>
+              <td class="border px-6 py-4 flex justify-center">
+                <button
+                  class="bg-pink-500 hover:bg-pink-600 text-white text-sm px-3 py-1 rounded-full"
+                >
+                  Start
+                </button>
+              </td>
+              <td class="border px-6 py-4 space-x-2">
+                <button
+                  class="bg-blue-500 hover:bg-blue-600 text-white text-sm px-3 py-1 rounded-full"
+                >
+                  <i class="fa fa-edit"></i>
+                </button>
+                <button
+                  class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded-full"
+                >
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

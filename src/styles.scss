@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,13 +19,15 @@ $projectOneTodo-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$projectOneTodo-theme: mat.define-light-theme((
-  color: (
-    primary: $projectOneTodo-primary,
-    accent: $projectOneTodo-accent,
-    warn: $projectOneTodo-warn,
+$projectOneTodo-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $projectOneTodo-primary,
+      accent: $projectOneTodo-accent,
+      warn: $projectOneTodo-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -38,5 +39,86 @@ $projectOneTodo-theme: mat.define-light-theme((
 @tailwind components;
 @tailwind utilities;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// ☀️🌙 Light & Dark Theme Suggestions:
+// 🔥 Your Current Dark Theme (Perfect for Default)
+// Background: #1B1F3B or similar
+
+// Accent (gradient): Purple #6C4BC9, Pink #E74F9E, Blue #2D9CDB
+
+// Text: Light Gray #E0E0E0 or White
+
+// 🌤 Suggested Light Theme (Optional Toggle)
+// Background: #F8F9FB or #FAFAFA
+
+// Accent: Same gradient for buttons/headers
+
+// Text: Dark Gray #2C2C2C
+
+// Borders/Dividers: Soft Gray #E0E0E0
+
+body {
+  background: radial-gradient(
+    circle at 90% 0%,
+    rgba(231, 79, 158),
+    rgb(31, 16, 83) 25%
+  );
+  background-color: #1b1f3b;
+  color: #e0e0e0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.container {
+  max-width: 100%;
+  padding: 1rem; /* mobile-safe padding */
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1440px;
+  }
+}
+
+.card {
+  position: relative;
+  background: #1b1f3b;
+  z-index: 999;
+}
+
+.sub-card {
+  background: #20254c;
+}
