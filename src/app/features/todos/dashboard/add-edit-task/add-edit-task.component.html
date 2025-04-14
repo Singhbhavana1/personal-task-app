@@ -1,0 +1,55 @@
+<div class="task-card rounded-dialog">
+  <div class="header">
+    <span class="title">Add New Task</span>
+    <span class="close">✕</span>
+  </div>
+
+  <div class="form-section">
+    <div class="grid grid-cols-2 gap-2">
+      <div class="">
+        <label>Task Name</label>
+        <input type="text" class="input orange-border" />
+      </div>
+      <div class="">
+        <label>Due Date</label>
+        <div class="date-wrapper">
+          <input type="date" class="input orange-border" />
+          <span class="icon">📅</span>
+        </div>
+      </div>
+    </div>
+    <label>Priority</label>
+    <div class="priority-toggle">
+      <div class="priority low">Low</div>
+      <div class="priority medium">Medium</div>
+      <div class="priority high active">High</div>
+    </div>
+
+    <div class="start-now">
+      <label class="checkbox-container">
+        <input type="checkbox" />
+        <span class="checkmark"></span>
+        Start Now?
+      </label>
+    </div>
+
+    <label>Notes</label>
+    <input type="text" class="input" />
+
+    <div class="subtask-section">
+      <label class="subtask-title">+ Add Subtasks</label>
+      <div class="subtask-input">
+        <input type="text" class="input orange-border" />
+        <span class="delete-icon">🗑️</span>
+      </div>
+      <div class="subtask-input">
+        <input type="text" class="input orange-border" />
+        <span class="delete-icon">🗑️</span>
+      </div>
+    </div>
+
+    <div class="add-more">+ Add More</div>
+
+    <button class="save-btn">Save Task</button>
+  </div>
+</div>

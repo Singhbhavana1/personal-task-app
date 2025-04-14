@@ -18,7 +18,16 @@
       </div>
     </div>
     <div class="card sm:w-3/4 border rounded-xl px-4 py-2">
-      <h4>Task List</h4>
+      <div class="flex justify-between">
+        <h4 class="text-2xl px-4 font-bold tracking-wider">Task List</h4>
+        <div
+          class="bg-white text-purple-600 font-bold tracking-wider border-4 border-purple-600 hover:border-white border-double mr-8 px-4 py-1 text-center rounded-2xl hover:bg-purple-700 hover:text-white"
+        >
+          <button (click)="openAddTaskDialog()">
+            <span><i class="fa fa-plus"></i></span> Add New Task
+          </button>
+        </div>
+      </div>
       <div class="p-4 overflow-x-auto">
         <table
           class="min-w-full border-collapse border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#1b1f3b] shadow-lg rounded-lg"
@@ -50,29 +59,27 @@
               <th
                 class="border border-gray-300 dark:border-gray-600 px-6 py-3 text-left text-sm font-semibold uppercase"
               >
-                Notes
+                SubTasks/Notes
               </th>
-              <th
+              <!-- <th
                 class="border border-gray-300 dark:border-gray-600 px-6 py-3 text-left text-sm font-semibold uppercase"
               >
                 Start Pomodoro
-              </th>
-              <th
+              </th> -->
+              <!-- <th
                 class="border border-gray-300 dark:border-gray-600 px-6 py-3 text-left text-sm font-semibold uppercase"
               >
                 Edit/Delete
-              </th>
+              </th> -->
             </tr>
           </thead>
           <tbody>
             <tr
-              *ngFor="let task of taskList"
+              *ngFor="let task of paginatedTasks; let i = index"
               class="hover:bg-gray-100 dark:hover:bg-[#25294b] transition"
             >
-              <td
-                class="border px-6 py-4 text-sm text-gray-900 dark:text-white"
-              >
-                {{ task.name }}
+              <td class="border px-6 py-4 text-sm text-yellow-500">
+                <a routerLink="" class="cursor-pointer">{{ task.name }}</a>
               </td>
               <td
                 class="border px-6 py-4 text-sm text-gray-600 dark:text-gray-300"
@@ -102,21 +109,24 @@
               <td
                 class="border px-6 py-4 text-sm text-gray-700 dark:text-gray-200"
               >
-                <button
-                  class="bg-orange-500 hover:bg-orange-600 text-white text-sm px-3 py-2 rounded-full flex justify-center"
-                >
-                  <i class="fas fa-sticky-note"></i>
-                </button>
+                <div class="flex justify-center">
+                  <button
+                    class="bg-pink-500 hover:bg-pink-600 text-white text-sm px-3 py-2 rounded-full flex justify-center"
+                  >
+                    <i class="fas fa-pencil"></i>
+                  </button>
+                </div>
               </td>
-              <td class="border px-6 py-4 flex justify-center">
+              <!-- <td class="border px-6 py-4 flex justify-center">
                 <button
                   class="bg-pink-500 hover:bg-pink-600 text-white text-sm px-3 py-1 rounded-full"
                 >
                   Start
                 </button>
-              </td>
-              <td class="border px-6 py-4 space-x-2">
+              </td> -->
+              <!-- <td class="border px-6 py-4 space-x-2">
                 <button
+                  (click)="openEditTaskDialog(task, i)"
                   class="bg-blue-500 hover:bg-blue-600 text-white text-sm px-3 py-1 rounded-full"
                 >
                   <i class="fa fa-edit"></i>
@@ -126,11 +136,41 @@
                 >
                   <i class="fa fa-trash"></i>
                 </button>
-              </td>
+              </td> -->
             </tr>
           </tbody>
         </table>
+        <div class="flex justify-center items-center mt-4 space-x-2 text-sm">
+          <button
+            (click)="currentPage = currentPage - 1"
+            [disabled]="currentPage === 1"
+            class="bg-pink-600 hover:bg-purple-400 px-3 py-1 rounded"
+          >
+            Prev
+          </button>
+
+          <span *ngFor="let page of [].constructor(totalPages); let i = index">
+            <button
+              (click)="currentPage = i + 1"
+              [class.bg-blue-500]="currentPage === i + 1"
+              [class.text-white]="currentPage === i + 1"
+              class="px-3 py-1 rounded hover:bg-blue-300"
+            >
+              {{ i + 1 }}
+            </button>
+          </span>
+
+          <button
+            (click)="currentPage = currentPage + 1"
+            [disabled]="currentPage === totalPages"
+            class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class=""></div>

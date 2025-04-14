@@ -73,8 +73,11 @@ body {
   );
   background-color: #1b1f3b;
   color: #e0e0e0;
-  overflow: hidden;
   width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-attachment: fixed; /* Ensures the gradient stays in place while scrolling */
+  background-size: 100% auto;
 }
 
 .container {
